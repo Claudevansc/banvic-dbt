@@ -42,9 +42,29 @@ sources:
             - not_null
       
       - name: colaborador_agencia
+        description: Tabela de ponte entre colaboradores e agências nas quais trabalham.
         data_tests:
           - dbt_utils.unique_combination_of_columns:
               arguments:
                 combination_of_columns:
                   - cod_colaborador
                   - cod_agencia
+
+      - name: contas
+        description: Tabela de contas do Banvic que contém informações sobre cada conta existente no banco. 
+        columns:
+          - name: num_conta
+            description: Chave primária da tabela contas.
+            data_tests:
+              - unique
+              - not_null
+
+      - name: transacoes
+        description: Tabela de transações do Banvic, onde cada linha corresponde a uma transação. 
+        columns:
+          - name: cod_transacao
+            description: Chave primária da tabela transações.
+            data_tests:
+              - unique
+              - not_null
+              
