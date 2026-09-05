@@ -32,11 +32,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  banvic: # <-- Name of the project. If you renamed your project you have to change this as well
-
+  banvic:
 
 seeds:
-  banvic: # <-- Name of the project. If you renamed your project you have to change this as well
-    banvic:
-      +schema: erp_banvic
-      +enabled: true
+  banvic:
+    +schema: erp_banvic
+    +enabled: true
