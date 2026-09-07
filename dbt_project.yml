@@ -35,6 +35,9 @@ models:
   banvic:
 
 seeds:
-  banvic:
-    +schema: erp_banvic
-    +enabled: true
+  banvic: # ou o nome correto do seu projeto
+    localidades:
+      +column_types:
+        COD_LOCALIDADE: integer
+        CIDADE: varchar
+        UF: varchar
