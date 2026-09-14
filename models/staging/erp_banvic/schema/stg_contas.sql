@@ -1,0 +1,24 @@
+with fonte_contas as (
+
+    select *
+    from {{ source('erp', 'contas') }}
+
+),
+
+renomeado as (
+
+    select
+        cast(num_conta as int) as pk_conta,
+        cast(cod_cliente as int) as fk_cliente,
+        cast(cod_agencia as int) as fk_agencia,
+        cast(cod_colaborador as int) as fk_colaborador,
+        tipo_conta,
+        cast(saldo as decimal(32,2)) as saldo_total,
+        cast(data_abertura as timestamp) as ts_abertura_conta,
+        cast(data_ultimo_lanca as timestamp) as ts_ultimo_lancamento
+    from fonte_contas
+
+)
+
+select *
+from renomeado
