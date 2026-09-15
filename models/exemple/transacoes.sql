@@ -1,9 +1,9 @@
 with transacoes as (
 
     select
-        cod_transacao,
-        num_conta,
-        data_transacao,
+        pk_transacao as cod_transacao,
+        fk_conta as num_conta,
+        ts_transacao as data_transacao,
         nome_transacao,
         valor_transacao
     from {{ ref('stg_transacoes') }}

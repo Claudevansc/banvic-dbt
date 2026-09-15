@@ -13,9 +13,10 @@ renomeado as (
         cast(cod_agencia as int) as fk_agencia,
         cast(cod_colaborador as int) as fk_colaborador,
         tipo_conta,
-        cast(saldo as decimal(32,2)) as saldo_total,
-        cast(data_abertura as timestamp) as ts_abertura_conta,
-        cast(data_ultimo_lanca as timestamp) as ts_ultimo_lancamento
+        cast(data_abertura as timestamp) as ts_abertura,
+        cast(saldo_total as decimal(38,4)) as saldo_total,
+        cast(saldo_disponivel as decimal(38,2)) as saldo_disponivel,
+        cast(data_ultimo_lancamento as timestamp) as ts_ultimo_lancamento
     from fonte_contas
 
 )

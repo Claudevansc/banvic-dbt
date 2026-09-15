@@ -1,8 +1,24 @@
+version: 2
 
 sources:
+  - name: stripe
+    description: Tabela de transações originadas pelo sistema Stripe.
+    database: RAW
+    schema: STRIPE
+    tables:
+      - name: transacoes
+        description: Tabela de transações, onde cada linha corresponde a uma transação.
+        columns:
+          - name: cod_transacao
+            description: Chave primária da tabela transações.
+            data_tests:
+              - unique
+              - not_null
+
   - name: erp
-    description: Esse é o sistema ERP da Banvic com dados de clientes, colaboradores, contas e transações.
-    schema: erp_banvic
+    description: Esse é o sistema ERP da Banvic com dados de clientes, colaboradores e contas.
+    database: RAW
+    schema: BANVIC_ACADEMY
     tables:
       - name: localidades
         description: Tabela fonte de localidades contendo informações de cidades e estados.
@@ -10,18 +26,17 @@ sources:
           - name: cod_localidade
             description: Chave primária da tabela localidades.
             data_tests:
-            - unique
-            - not_null
-            
-        
+              - unique
+              - not_null
+
       - name: clientes
-        description: Tabela fonte de clientes contento informações pessoais de cada cliente da Banvic.
+        description: Tabela fonte de clientes contendo informações pessoais de cada cliente da Banvic.
         columns:
           - name: cod_cliente
             description: Chave primária da tabela clientes.
             data_tests:
-            - unique
-            - not_null
+              - unique
+              - not_null
 
       - name: colaboradores
         description: Tabela fonte de colaboradores contendo informações pessoais de cada colaborador do Banvic.
@@ -29,8 +44,8 @@ sources:
           - name: cod_colaborador
             description: Chave primária da tabela colaboradores.
             data_tests:
-            - unique
-            - not_null
+              - unique
+              - not_null
 
       - name: agencias
         description: Tabela fonte de todas as agências do Banvic e suas informações.
@@ -38,9 +53,9 @@ sources:
           - name: cod_agencia
             description: Chave primária da tabela agencias.
             data_tests:
-            - unique
-            - not_null
-      
+              - unique
+              - not_null
+
       - name: colaborador_agencia
         description: Tabela de ponte entre colaboradores e agências nas quais trabalham.
         data_tests:
@@ -51,20 +66,10 @@ sources:
                   - cod_agencia
 
       - name: contas
-        description: Tabela de contas do Banvic que contém informações sobre cada conta existente no banco. 
+        description: Tabela de contas do Banvic que contém informações sobre cada conta existente no banco.
         columns:
           - name: num_conta
             description: Chave primária da tabela contas.
             data_tests:
               - unique
               - not_null
-
-      - name: transacoes
-        description: Tabela de transações do Banvic, onde cada linha corresponde a uma transação. 
-        columns:
-          - name: cod_transacao
-            description: Chave primária da tabela transações.
-            data_tests:
-              - unique
-              - not_null
-              

@@ -1,7 +1,7 @@
 with fonte_transacoes as (
 
     select *
-    from {{ source('erp', 'transacoes') }}
+    from {{ source('stripe', 'transacoes') }}
 
 ),
 
